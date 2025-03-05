@@ -1,7 +1,8 @@
 "use client"
+import back from "@/assets/returnIcon.png"
 import { useState } from "react";
-import Header from "../header/header"
-import InputField from "../inputField/inputField"
+import Header from "../../components/header"
+import InputField from "../../components/inputField"
 
 export default function SignUp() {
     const [phoneNumber, setPhoneNumber] = useState("");
@@ -53,24 +54,24 @@ export default function SignUp() {
     const lastNameNotValid = submitted && !lastName;
 
     return (
-        <>
-            <Header />
-            <div>
-                <h2>Let's get started</h2>
-                <p>
+        <div className="w-full max-w-sm mx-auto">
+            <Header img={back} altMessage="return" link="/" height={30} width={30} className="rounded-full"/>
+            <div className="text-center mt-5">
+                <h2 className="text-2xl ">Let's get started</h2>
+                <p className="my-2 text-xs">
                     We just need a bit more information. 
-                    Please enter your details to get started.
+                    Please<br></br> enter your details to get started.
                 </p>
             </div>
             
-
-            <div className="flex">
-                <InputField label = "Country" className="w-15" require = "required" />
+            <div className="mx-4">
+              <div className="flex">
+                <InputField label = "Country" className="w-15" required />
                 <InputField 
                     label = "Phone number" 
                     type="tel" 
                     invalid={phoneNumberNotValid}
-                    require = "required" 
+                    required 
                     placeholder="08000000000"
                     onChange={(event) => handleInputChange("Phone number", event.target.value)}
                 />
@@ -80,7 +81,7 @@ export default function SignUp() {
                 label="Email address" 
                 type ="email" 
                 invalid = {emailNotValid}
-                require = "required" 
+                required
                 placeholder="example@email.com"
                 onChange={(event) => handleInputChange("email", event.target.value)}
                 />
@@ -91,7 +92,7 @@ export default function SignUp() {
                     label="First name" 
                     type ="text" 
                     invalid = {firstNameNotValid}
-                    require = "required" 
+                    required 
                     placeholder="e.g John"
                     onChange={(event) => handleInputChange("First name", event.target.value)}
                     />
@@ -100,7 +101,7 @@ export default function SignUp() {
                     label="Last name" 
                     type ="text" 
                     invalid = {lastNameNotValid}
-                    require = "required" 
+                    required 
                     placeholder="e.g Doe"
                     onChange={(event) => handleInputChange("Last name", event.target.value)}
                     />
@@ -121,6 +122,8 @@ export default function SignUp() {
                 value={referralCode}
                 onChange={(event) => handleInputChange("Referral Code", event.target.value)}
                 />
+            </div>
+            
             
             <div>
                 <button onClick={handleLogin}>Continue</button>
@@ -128,7 +131,7 @@ export default function SignUp() {
             </div>
             
             
-        </>
+        </div>
         
     )
 }

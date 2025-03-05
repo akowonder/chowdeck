@@ -27,7 +27,7 @@ export default function InputField({ label, invalid, invalidMessage, type, ...pr
             </>
         )
          
-        inputClasses = " bg-stone-300"
+        inputClasses += " bg-stone-300"
     }
     return (
         <div>   
